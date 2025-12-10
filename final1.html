@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactCheck Health Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* --------------------------------------------------
+   GLOBAL RESET
+-------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Roboto", sans-serif;
+    background: #f7f8f9;
+    color: #333;
+}
+
+/* --------------------------------------------------
+   NAVIGATION
+-------------------------------------------------- */
+nav {
+    background: #2c7a2f;
+    padding: 15px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+nav ul li a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* --------------------------------------------------
+   HERO SECTION
+-------------------------------------------------- */
+.hero {
+    background: url("https://source.unsplash.com/1600x900/?health,medical") center/cover no-repeat;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+.hero h1 {
+    font-size: 52px;
+    letter-spacing: 1.5px;
+}
+.hero p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* --------------------------------------------------
+   MAIN CONTAINER
+-------------------------------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* --------------------------------------------------
+   MISSION SECTION
+-------------------------------------------------- */
+.mission {
+    background: #e8f5e9;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+.mission h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+.mission ul li {
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+/* --------------------------------------------------
+   MYTH & FACT CARDS
+-------------------------------------------------- */
+.myth-section {
+    margin-bottom: 40px;
+}
+.myth-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.myth {
+    width: 48%;
+    background: #ffcc00;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+.myth:hover {
+    transform: scale(1.03);
+}
+.myth .icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 32px;
+    opacity: 0.2;
+}
+.fact {
+    display: none;
+    background: #e0f7fa;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+}
+.fact-button {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 18px;
+    background: #2c7a2f;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------
+   FEATURED ARTICLES
+-------------------------------------------------- */
+.section-title {
+    font-size: 28px;
+    color: #2c7a2f;
+    margin: 30px 0 15px;
+}
+.article-card {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.article-card img {
+    width: 40%;
+    border-radius: 10px;
+}
+.article-card .info {
+    width: 60%;
+}
+
+/* --------------------------------------------------
+   TIPS & GUIDES
+-------------------------------------------------- */
+.tips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.tip-box {
+    background: #e3f2fd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.tip-box i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #1976d2;
+}
+
+/* --------------------------------------------------
+   NEWS SECTION
+-------------------------------------------------- */
+.news-card {
+    background: #fff3cd;
+    padding: 20px;
+    border-left: 5px solid #ff9800;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* --------------------------------------------------
+   EXPERT SPOTLIGHT
+-------------------------------------------------- */
+.spotlight-grid {
+    display: flex;
+    gap: 20px;
+}
+.profile {
+    width: 48%;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.profile img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+footer {
+    background: #2c7a2f;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+}
+footer .social i {
+    margin: 0 8px;
+    font-size: 22px;
+}
+
+/* --------------------------------------------------
+   RESPONSIVE MEDIA
+-------------------------------------------------- */
+@media(max-width: 768px){
+    .myth { width: 100%; }
+    .article-card { flex-direction: column; }
+    .article-card img { width: 100%; }
+    .tips { grid-template-columns: 1fr; }
+    .spotlight-grid { flex-direction: column; }
+    .profile { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <ul>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#myths">Myths</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#tips">Tips</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#experts">Experts</a></li>
+    </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <div>
+        <h1>FactCheck Health Hub</h1>
+        <p>Debunking myths. Sharing facts. Promoting real science.</p>
+    </div>
+</div>
+
+<div class="container">
+
+<!-- MISSION -->
+<section id="mission" class="mission">
+    <h2>Our Mission</h2>
+    <p>We fight misinformation by providing clear, science-backed facts that improve health literacy worldwide.</p>
+    <ul>
+        <li><i class="fa fa-check"></i> Promote evidence-based health information</li>
+        <li><i class="fa fa-check"></i> Debunk myths and false beliefs</li>
+        <li><i class="fa fa-check"></i> Educate and empower communities</li>
+        <li><i class="fa fa-check"></i> Make reliable health info accessible to all</li>
+    </ul>
+</section>
+
+<!-- MYTHS SECTION -->
+<section id="myths" class="myth-section">
+    <h2 class="section-title">Common Health Myths</h2>
+
+    <div class="myth-grid">
+
+        <!-- 10 myths here -->
+        <!-- Myth 1 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: You must drink 8 glasses of water daily.</h3>
+            <i class="icon">💧</i>
+            <div class="fact"><p><strong>Fact:</strong> Your hydration needs depend on your body, activity, and environment.</p></div>
+        </div>
+
+        <!-- Myth 2 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: Cracking knuckles causes arthritis.</h3>
+            <i class="icon">🤲</i>
+            <div class="fact"><p><strong>Fact:</strong> No scientific evidence supports this claim.</p></div>
+        </div>
+
+        <!-- Myth 3 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: Cold weather makes you sick.</h3>
+            <i class="icon">🌬️</i>
+            <div class="fact"><p><strong>Fact:</strong> Viruses—not temperature—cause colds.</p></div>
+        </div>
+
+        <!-- Myth 4 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: Detox diets cleanse the body.</h3>
+            <i class="icon">🍃</i>
+            <div class="fact"><p><strong>Fact:</strong> Your liver and kidneys already detoxify your body naturally.</p></div>
+        </div>
+
+        <!-- Myth 5 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: Eating after 8 PM causes weight gain.</h3>
+            <i class="icon">🍽️</i>
+            <div class="fact"><p><strong>Fact:</strong> Weight gain depends on total calorie intake, not time.</p></div>
+        </div>
+
+        <!-- Myth 6 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: Vaccines cause autism.</h3>
+            <i class="icon">💉</i>
+            <div class="fact"><p><strong>Fact:</strong> Extensive studies show no link between vaccines and autism.</p></div>
+        </div>
+
+        <!-- Myth 7 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: Natural sugar is healthier than processed sugar.</h3>
+            <i class="icon">🍬</i>
+            <div class="fact"><p><strong>Fact:</strong> Sugar is sugar—your body processes them similarly.</p></div>
+        </div>
+
+        <!-- Myth 8 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: You must wash wounds with hydrogen peroxide.</h3>
+            <i class="icon">🩹</i>
+            <div class="fact"><p><strong>Fact:</strong> Peroxide damages tissue; clean wounds with gentle soap and water.</p></div>
+        </div>
+
+        <!-- Myth 9 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: You lose most heat through your head.</h3>
+            <i class="icon">🧠</i>
+            <div class="fact"><p><strong>Fact:</strong> Heat loss is proportional to exposed skin.</p></div>
+        </div>
+
+        <!-- Myth 10 -->
+        <div class="myth" onclick="toggleFact(this)">
+            <h3>Myth: You need supplements for good health.</h3>
+            <i class="icon">💊</i>
+            <div class="fact"><p><strong>Fact:</strong> Most nutrients should come from food unless prescribed.</p></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FEATURED ARTICLES -->
+<section id="articles">
+    <h2 class="section-title">Featured Articles</h2>
+
+    <article class="article-card">
+        <img src="https://source.unsplash.com/600x400/?nutrition" alt="">
+        <div class="info">
+            <h3>Is Organic Food Really Healthier?</h3>
+            <p>Understanding the facts behind organic labeling and health benefits.</p>
+        </div>
+    </article>
+
+    <article class="article-card">
+        <img src="https://source.unsplash.com/600x400/?sleep" alt="">
+        <div class="info">
+            <h3>How Much Sleep Do You Actually Need?</h3>
+            <p>The science of sleep cycles and recommended hours for each age group.</p>
+        </div>
+    </article>
+
+</section>
+
+<!-- TIPS & GUIDES -->
+<section id="tips">
+    <h2 class="section-title">Health Tips & Guides</h2>
+
+    <div class="tips">
+
+        <div class="tip-box">
+            <i class="fa fa-apple-alt"></i>
+            <h3>Eat Whole Foods</h3>
+            <p>Fiber-rich meals improve digestion and energy.</p>
+        </div>
+
+        <div class="tip-box">
+            <i class="fa fa-walking"></i>
+            <h3>Stay Active</h3>
+            <p>30 minutes of movement daily reduces disease risks.</p>
+        </div>
+
+        <div class="tip-box">
+            <i class="fa fa-brain"></i>
+            <h3>Mental Wellness</h3>
+            <p>Mindfulness reduces stress and boosts focus.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- NEWS SECTION -->
+<section id="news">
+    <h2 class="section-title">Latest Health News</h2>
+
+    <div class="news-card">
+        <h3>🌎 WHO Reports Drop in Global Flu Cases</h3>
+        <p>Seasonal flu activity continues to decline in multiple regions.</p>
+    </div>
+
+    <div class="news-card">
+        <h3>🔬 New Study Links Exercise to Better Brain Health</h3>
+        <p>Scientists find daily walking helps lower cognitive decline.</p>
+    </div>
+</section>
+
+<!-- EXPERT SPOTLIGHT -->
+<section id="experts">
+    <h2 class="section-title">Expert Spotlight</h2>
+
+    <div class="spotlight-grid">
+        
+        <div class="profile">
+            <img src="https://source.unsplash.com/600x400/?doctor" alt="">
+            <h3>Dr. Anna Martinez</h3>
+            <p>Public health educator with 15 years of community training experience.</p>
+        </div>
+
+        <div class="profile">
+            <img src="https://source.unsplash.com/600x400/?scientist" alt="">
+            <h3>Dr. Joel Park</h3>
+            <p>Medical researcher specializing in infectious diseases.</p>
+        </div>
+
+    </div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2025 FactCheck Health Hub — All Rights Reserved.</p>
+    <div class="social">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+    </div>
+</footer>
+
+<script>
+function toggleFact(element){
+    const fact = element.querySelector('.fact');
+    fact.style.display = fact.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
